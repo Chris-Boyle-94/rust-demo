@@ -9,7 +9,7 @@ fn main() {
         println!("\tq: Quit");
         println!();
 
-        let mut input = String::new();
+        let mut input: String = String::new();
 
         io::stdin()
             .read_line(&mut input)
@@ -26,10 +26,10 @@ fn main() {
             }
         };
 
-        let another = loop {
+        let another: bool = loop {
             println!("\nWould you like to run another program? (y/n)\n");
 
-            let mut input = String::new();
+            let mut input: String = String::new();
 
             io::stdin()
                 .read_line(&mut input)
@@ -58,20 +58,20 @@ fn main() {
 fn temp_converter() {
     println!("\nCONVERT TEMPERATURES (F -> C or C -> F)\n");
 
-    let selected_type = loop {
+    let selected_type: String = loop {
         println!("Choose a temp type:");
         println!("\t1. Fahrenheit");
         println!("\t2. Celsius");
 
-        let mut temp_type = String::new();
+        let mut temp_type: String = String::new();
 
         io::stdin()
             .read_line(&mut temp_type)
             .expect("Something went wrong...");
 
-        let temp_type = match temp_type.trim() {
-            "1" => "Fahrenheit",
-            "2" => "Celsius",
+        let temp_type: String = match temp_type.trim() {
+            "1" => String::from("Fahrenheit"),
+            "2" => String::from("Celsius"),
             _ => {
                 println!("\nPlease enter either '1' or '2'\n");
                 continue;
@@ -89,16 +89,16 @@ fn temp_converter() {
 
     println!("\n{} -> {}", selected_type, converted_type);
 
-    let selected_temp = loop {
+    let selected_temp: f32 = loop {
         println!("\nPlease enter a temperature to convert\n");
 
-        let mut temp = String::new();
+        let mut temp: String = String::new();
 
         io::stdin()
             .read_line(&mut temp)
             .expect("Something went wrong, dude..");
 
-        let temp = match temp.trim().parse::<f32>() {
+        let temp: f32 = match temp.trim().parse::<f32>() {
             Ok(num) => num,
             Err(_) => {
                 println!("\nPlease enter a number\n");
@@ -108,7 +108,7 @@ fn temp_converter() {
         break temp;
     };
 
-    let converted_temp = if selected_type == "Fahrenheit" {
+    let converted_temp: f32 = if selected_type == "Fahrenheit" {
         let sub: f32 = selected_temp - 32.0;
         sub / 1.8
     } else {
@@ -129,13 +129,13 @@ fn fibo() {
     let position: u64 = loop {
         println!("\nPlease enter the position of the number you would like to find (i.e. position 10 is fib number 55)\n");
 
-        let mut input = String::new();
+        let mut input: String = String::new();
 
         io::stdin()
             .read_line(&mut input)
             .expect("Something went wrong");
 
-        let input = match input.trim().parse::<u64>() {
+        let input: u64 = match input.trim().parse::<u64>() {
             Ok(num) => num,
             Err(_) => continue,
         };
@@ -151,11 +151,11 @@ fn fibo() {
     let fib_number: u64 = if position == 1 {
         1
     } else {
-        let mut count = 1;
-        let mut prev = 0;
-        let mut current = 1;
+        let mut count: u64 = 1;
+        let mut prev: u64 = 0;
+        let mut current: u64 = 1;
         loop {
-            let next = current + prev;
+            let next: u64 = current + prev;
             prev = current;
             current = next;
             count += 1;
@@ -176,7 +176,7 @@ fn fibo() {
 fn twelve_days() {
     println!("\nTHE TWELVE DAYS OF CHRISTMAS\n");
 
-    let days_arr = [
+    let days_arr: [&str; 12] = [
         "a partridge in a pear tree\n",
         "two turtle doves,",
         "three French hens,",
