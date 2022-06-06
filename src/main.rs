@@ -54,7 +54,7 @@ fn main() {
     }
 }
 
-// Converts temperature between Fahrenheit and Celsius
+// Converts temperature between Fahrenheit and Celsius and prints result
 fn temp_converter() {
     println!("\nCONVERT TEMPERATURES (F -> C or C -> F)\n");
 
@@ -122,7 +122,7 @@ fn temp_converter() {
     );
 }
 
-// prints the nth fib number
+// Prints the nth fib number
 fn fibo() {
     println!("\nFIBO FINDER");
 
@@ -160,7 +160,7 @@ fn fibo() {
             current = next;
             count += 1;
 
-            if &count == &position {
+            if count == position {
                 break current;
             }
         }
@@ -172,7 +172,7 @@ fn fibo() {
     );
 }
 
-// prints the lyrics to The Twelve Days of Christmas
+// Prints the lyrics to The Twelve Days of Christmas
 fn twelve_days() {
     println!("\nTHE TWELVE DAYS OF CHRISTMAS\n");
 
