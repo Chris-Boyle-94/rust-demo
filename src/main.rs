@@ -140,7 +140,7 @@ fn fibo() {
             Err(_) => continue,
         };
 
-        if input > 1 && input < 94 {
+        if input > 0 && input < 94 {
             break input;
         } else {
             println!("\nPlease enter a number 1-93.\n");
@@ -148,7 +148,9 @@ fn fibo() {
         }
     };
 
-    let fib_number: u64 = {
+    let fib_number: u64 = if position == 1 {
+        1
+    } else {
         let mut count = 1;
         let mut prev = 0;
         let mut current = 1;
@@ -194,7 +196,7 @@ fn twelve_days() {
             1 => String::from("1st"),
             2 => String::from("2nd"),
             3 => String::from("3rd"),
-            _ => format!("{}th", i.to_string()),
+            _ => format!("{}th", i),
 
         };
 
@@ -202,7 +204,7 @@ fn twelve_days() {
 
         for j in (0..i).rev() {
             if j != 0 || i == 1 {
-                println!("{}", days_arr[j]);
+                println!("\t{}", days_arr[j]);
             } else {
                 println!("and {}", days_arr[j])
             }
