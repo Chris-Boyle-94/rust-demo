@@ -1,4 +1,6 @@
 use std::io;
+mod fib;
+mod hanoi;
 
 fn main() {
     loop {
@@ -6,8 +8,8 @@ fn main() {
         println!("\t1: Temp converter");
         println!("\t2: Fibo Finder");
         println!("\t3: Twelve Days of Christmas");
-        println!("\tq: Quit");
-        println!();
+        println!("\t4: Tower of Hanoi");
+        println!("\tq: Quit\n");
 
         let mut input: String = String::new();
 
@@ -17,8 +19,9 @@ fn main() {
 
         match input.trim() {
             "1" => temp_converter(),
-            "2" => fibo(),
+            "2" => fib::main(),
             "3" => twelve_days(),
+            "4" => hanoi::main(),
             "q" | "Q" => break,
             _ => {
                 println!("\nPlease enter a listed option\n");
@@ -35,7 +38,7 @@ fn main() {
                 .read_line(&mut input)
                 .expect("Something went wrong, dawg.");
 
-            let input = match input.trim().to_lowercase().as_str() {
+            let input: bool = match input.trim().to_lowercase().as_str() {
                 "y" => true,
                 "n" => false,
                 _ => {
@@ -123,54 +126,54 @@ fn temp_converter() {
 }
 
 // Prints the nth fib number
-fn fibo() {
-    println!("\nFIBO FINDER");
+// fn fibo() {
+//     println!("FIBO FINDER");
 
-    let position: u64 = loop {
-        println!("\nPlease enter the position of the number you would like to find (i.e. position 10 is fib number 55)\n");
+//     let position: u64 = loop {
+//         println!("\nPlease enter the position of the number you would like to find (i.e. position 10 is fib number 55)\n");
 
-        let mut input: String = String::new();
+//         let mut input: String = String::new();
 
-        io::stdin()
-            .read_line(&mut input)
-            .expect("Something went wrong");
+//         io::stdin()
+//             .read_line(&mut input)
+//             .expect("Something went wrong");
 
-        let input: u64 = match input.trim().parse::<u64>() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
+//         let input: u64 = match input.trim().parse::<u64>() {
+//             Ok(num) => num,
+//             Err(_) => continue,
+//         };
 
-        if input > 0 && input < 94 {
-            break input;
-        } else {
-            println!("\nPlease enter a number 1-93.\n");
-            continue;
-        }
-    };
+//         if input > 0 && input < 94 {
+//             break input;
+//         } else {
+//             println!("\nPlease enter a number 1-93.\n");
+//             continue;
+//         }
+//     };
 
-    let fib_number: u64 = if position == 1 {
-        1
-    } else {
-        let mut count: u64 = 1;
-        let mut prev: u64 = 0;
-        let mut current: u64 = 1;
-        loop {
-            let next: u64 = current + prev;
-            prev = current;
-            current = next;
-            count += 1;
+//     let fib_number: u64 = if position == 1 {
+//         1
+//     } else {
+//         let mut count: u64 = 1;
+//         let mut prev: u64 = 0;
+//         let mut current: u64 = 1;
+//         loop {
+//             let next: u64 = current + prev;
+//             prev = current;
+//             current = next;
+//             count += 1;
 
-            if count == position {
-                break current;
-            }
-        }
-    };
+//             if count == position {
+//                 break current;
+//             }
+//         }
+//     };
 
-    println!(
-        "\nThe fibonacci number at position {} is: {}\n",
-        position, fib_number
-    );
-}
+//     println!(
+//         "\nThe fibonacci number at position {} is: {}\n",
+//         position, fib_number
+//     );
+// }
 
 // Prints the lyrics to The Twelve Days of Christmas
 fn twelve_days() {
@@ -197,7 +200,6 @@ fn twelve_days() {
             2 => String::from("2nd"),
             3 => String::from("3rd"),
             _ => format!("{}th", i),
-
         };
 
         println!("On the {} day of Christmas my true love gave to me:", day);
@@ -206,8 +208,46 @@ fn twelve_days() {
             if j != 0 || i == 1 {
                 println!("\t{}", days_arr[j]);
             } else {
-                println!("and {}", days_arr[j])
+                println!("\tand {}", days_arr[j])
             }
         }
     }
 }
+
+// fn tower() {
+//     // With 3 disks, the puzzle can be solved in 7 moves.
+//     // The minimal number of moves required to solve a Tower of Hanoi puzzle is 2n − 1,
+//     // where n is the number of disks.
+
+//     let mut first: Vec<u8> = Vec::new();
+//     let mut second: Vec<u8> = Vec::new();
+//     let mut third: Vec<u8> = Vec::new();
+
+//     let stack_size: u8 = loop {
+//         let mut input = String::new();
+
+//         println!("Stack size:\n");
+
+//         io::stdin().read_line(&mut input).expect("ERROR ERROR");
+
+//         let input = match input.trim().parse::<u8>() {
+//             Ok(num) => num,
+//             Err(_) => continue,
+//         };
+
+//         if input > 0 || input < 255 {
+//             break input - 1;
+//         } else {
+//             println!("Please enter a number 0-256");
+//             continue;
+//         }
+//     };
+
+//     for i in 0..stack_size {
+//         first.push(i + 1);
+//     }
+
+//     for i in 0..10 {
+//         println!("{}", first[i])
+//     }
+// }

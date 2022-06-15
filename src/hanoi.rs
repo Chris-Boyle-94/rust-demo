@@ -1,7 +1,7 @@
 
 use std::io;
 
-fn main() {
+pub fn main() {
     // Recursive HANOI function
     fn recur_hanoi((n, source, target, aux): 
         (u32, &mut Vec<u32>, &mut Vec<u32>, &mut Vec<u32>)) {   

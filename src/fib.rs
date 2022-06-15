@@ -1,7 +1,7 @@
 
 use std::io;
 
-fn main() {
+pub fn main() {
     fn quick_fibo(depth:u32) -> u64{
         if depth == 0 {
             return 0;
