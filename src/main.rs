@@ -55,6 +55,7 @@ fn main() {
             break;
         }
     }
+    moot() // see definition at bottom of file
 }
 
 // Converts temperature between Fahrenheit and Celsius and prints result
@@ -125,55 +126,59 @@ fn temp_converter() {
     );
 }
 
-// Prints the nth fib number
-// fn fibo() {
-//     println!("FIBO FINDER");
+/** fibo
+ * Prints the nth fib number
+ * 
+ * fn fibo() {
+ *     println!("FIBO FINDER");
+ * 
+ *     let position: u64 = loop {
+ *         println!("\nPlease enter the position of the number you would like to find (i.e. position 10 is fib number 55)\n");
+ * 
+ *         let mut input: String = String::new();
+ * 
+ *         io::stdin()
+ *             .read_line(&mut input)
+ *             .expect("Something went wrong");
+ * 
+ *         let input: u64 = match input.trim().parse::<u64>() {
+ *             Ok(num) => num,
+ *             Err(_) => continue,
+ *         };
+ * 
+ *         if input > 0 && input < 94 {
+ *             break input;
+ *         } else {
+ *             println!("\nPlease enter a number 1-93.\n");
+ *             continue;
+ *         }
+ *     };
+ * 
+ *     let fib_number: u64 = if position == 1 {
+ *         1
+ *     } else {
+ *         let mut count: u64 = 1;
+ *         let mut prev: u64 = 0;
+ *         let mut current: u64 = 1;
+ *         loop {
+ *             let next: u64 = current + prev;
+ *             prev = current;
+ *             current = next;
+ *             count += 1;
+ * 
+ *             if count == position {
+ *                 break current;
+ *             }
+ *         }
+ *     };
+ * 
+ *     println!(
+ *         "\nThe fibonacci number at position {} is: {}\n",
+ *         position, fib_number
+ *     );
+ * }
+ */
 
-//     let position: u64 = loop {
-//         println!("\nPlease enter the position of the number you would like to find (i.e. position 10 is fib number 55)\n");
-
-//         let mut input: String = String::new();
-
-//         io::stdin()
-//             .read_line(&mut input)
-//             .expect("Something went wrong");
-
-//         let input: u64 = match input.trim().parse::<u64>() {
-//             Ok(num) => num,
-//             Err(_) => continue,
-//         };
-
-//         if input > 0 && input < 94 {
-//             break input;
-//         } else {
-//             println!("\nPlease enter a number 1-93.\n");
-//             continue;
-//         }
-//     };
-
-//     let fib_number: u64 = if position == 1 {
-//         1
-//     } else {
-//         let mut count: u64 = 1;
-//         let mut prev: u64 = 0;
-//         let mut current: u64 = 1;
-//         loop {
-//             let next: u64 = current + prev;
-//             prev = current;
-//             current = next;
-//             count += 1;
-
-//             if count == position {
-//                 break current;
-//             }
-//         }
-//     };
-
-//     println!(
-//         "\nThe fibonacci number at position {} is: {}\n",
-//         position, fib_number
-//     );
-// }
 
 // Prints the lyrics to The Twelve Days of Christmas
 fn twelve_days() {
@@ -214,40 +219,47 @@ fn twelve_days() {
     }
 }
 
-// fn tower() {
-//     // With 3 disks, the puzzle can be solved in 7 moves.
-//     // The minimal number of moves required to solve a Tower of Hanoi puzzle is 2n − 1,
-//     // where n is the number of disks.
+/** tower
+ * fn tower() {
+ *     // With 3 disks, the puzzle can be solved in 7 moves.
+ *     // The minimal number of moves required to solve a Tower of Hanoi puzzle is 2n − 1,
+ *     // where n is the number of disks.
+ * 
+ *     let mut first: Vec<u8> = Vec::new();
+ *     let mut second: Vec<u8> = Vec::new();
+ *     let mut third: Vec<u8> = Vec::new();
+ * 
+ *     let stack_size: u8 = loop {
+ *         let mut input = String::new();
+ * 
+ *         println!("Stack size:\n");
+ * 
+ *         io::stdin().read_line(&mut input).expect("ERROR ERROR");
+ * 
+ *         let input = match input.trim().parse::<u8>() {
+ *             Ok(num) => num,
+ *             Err(_) => continue,
+ *         };
+ * 
+ *         if input > 0 || input < 255 {
+ *             break input - 1;
+ *         } else {
+ *             println!("Please enter a number 0-256");
+ *             continue;
+ *         }
+ *     };
+ * 
+ *     for i in 0..stack_size {
+ *         first.push(i + 1);
+ *     }
+ * 
+ *     for i in 0..10 {
+ *         println!("{}", first[i])
+ *     }
+ * }
+ * 
+ */
 
-//     let mut first: Vec<u8> = Vec::new();
-//     let mut second: Vec<u8> = Vec::new();
-//     let mut third: Vec<u8> = Vec::new();
-
-//     let stack_size: u8 = loop {
-//         let mut input = String::new();
-
-//         println!("Stack size:\n");
-
-//         io::stdin().read_line(&mut input).expect("ERROR ERROR");
-
-//         let input = match input.trim().parse::<u8>() {
-//             Ok(num) => num,
-//             Err(_) => continue,
-//         };
-
-//         if input > 0 || input < 255 {
-//             break input - 1;
-//         } else {
-//             println!("Please enter a number 0-256");
-//             continue;
-//         }
-//     };
-
-//     for i in 0..stack_size {
-//         first.push(i + 1);
-//     }
-
-//     for i in 0..10 {
-//         println!("{}", first[i])
-//     }
-// }
+fn moot() {
+ // lazy placeholder so I can fold unused functions using doc comments
+}
